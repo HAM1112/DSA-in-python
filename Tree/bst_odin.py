@@ -119,7 +119,7 @@ class BinaryTree():
             node.data = min_node.data
             node.r = self._delete_recursive(node.r, min_node.data)
         return node
-
+    
 BTS = BinaryTree()
 
 BTS.insert(6)
@@ -138,6 +138,7 @@ print(BTS.largest())
 BTS.delete(10)
 
 print(BTS.displayInorder())
+BTS.isBTS()
 
 
 
