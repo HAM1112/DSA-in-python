@@ -1,4 +1,8 @@
-a = [2,3,4,5,6,7,4,7]
+def test(val = None):
+    number = None
+    if number is None:
+        return None
+    return  number
+    
 
-
-print(a[len(a)//2])
+print(test())

@@ -97,6 +97,28 @@ class BinaryTree():
             pointer = pointer.r
         
         return pointer.data
+    
+    def delete(self, data):
+        self.root = self._delete_recursive(self.root, data)
+
+    def _delete_recursive(self, node, data):
+        if node is None:
+            return node
+
+        if data < node.data:
+            node.l = self._delete_recursive(node.l, data)
+        elif data > node.data:
+            node.r = self._delete_recursive(node.r, data)
+        else:
+            if node.l is None:
+                return node.r
+            elif node.r is None:
+                return node.l
+
+            min_node = self.smallest(node.r)
+            node.data = min_node.data
+            node.r = self._delete_recursive(node.r, min_node.data)
+        return node
 
 BTS = BinaryTree()
 
@@ -108,10 +130,15 @@ BTS.insert(7)
 
 print(BTS.serach(8))
 print(BTS.displayInorder())
-print(BTS.displayPostorder())
-print(BTS.displayPreorder())
+# print(BTS.displayPostorder())
+# print(BTS.displayPreorder())
 print(BTS.smallest())
 print(BTS.largest())
+
+BTS.delete(10)
+
+print(BTS.displayInorder())
+
 
 
             
