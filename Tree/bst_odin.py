@@ -42,11 +42,61 @@ class BinaryTree():
             return self._search(node.l,val)
         return self._search(node.r,val)
     
-    def displayInOrder(self):
-        nodes = []
-        self._inorder(self.root , nodes)
-        return nodes
+    # def displayInOrder(self):
+    #     nodes = []
+    #     self._inorder(self.root , nodes)
+    #     return nodes
     
+    # def _inorder(self,node,nodes):
+    #     if node :
+    #         self._inorder(node.l,nodes)
+    #         nodes.append(node.data)
+    #         self._inorder(node.r,nodes)
+    
+    # PREORDER
+    def displayPreorder(self):
+        return self.preorder(self.root)
+    def preorder(self,node):
+        return ([node.data] + self.preorder(node.l) + self.preorder(node.r)) if node else []
+    
+    # INORDER
+    def displayInorder(self):
+        return self.inorder(self.root)
+    def inorder(self,node):
+        return (self.inorder(node.l) + [node.data] + self.inorder(node.r)) if node else []
+    
+    # POSTORDER
+    def displayPostorder(self):
+        return self.postorder(self.root)
+    def postorder(self,node):
+        return (self.postorder(node.l) + self.postorder(node.r) + [node.data]) if node else []
+    
+    
+    
+    # Find smallest value in treee
+    def smallest(self):
+        pointer = self.root
+        
+        if pointer is None :
+            print("Tree is empty")
+            return
+        
+        while pointer.l :
+            pointer = pointer.l
+        
+        return pointer.data
+    
+    # Find largest value in tree
+    def largest(self):
+        pointer = self.root
+        
+        if pointer is None:
+            print("Tree is empty")
+            return
+        while pointer.r:
+            pointer = pointer.r
+        
+        return pointer.data
 
 BTS = BinaryTree()
 
@@ -57,7 +107,11 @@ BTS.insert(4)
 BTS.insert(7)
 
 print(BTS.serach(8))
-
+print(BTS.displayInorder())
+print(BTS.displayPostorder())
+print(BTS.displayPreorder())
+print(BTS.smallest())
+print(BTS.largest())
 
 
             
