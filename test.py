@@ -1,8 +1,5 @@
-def test(val = None):
-    number = None
-    if number is None:
-        return None
-    return  number
-    
+a = None
+b = 10 
 
-print(test())
+c = a + b
+print(c)

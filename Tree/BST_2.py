@@ -8,6 +8,7 @@ class Node():
 # search for value
 # find smallest value
 # find largest value
+# Check if the tree is binary or not
 class BinarySearchTree():
     def __init__(self) -> None:
         self.root = None
@@ -54,6 +55,7 @@ class BinarySearchTree():
         elif val > node.data:
             self._search(node.right,val)
     
+    # find the smallest va;ue
     def smallest(self):
         pointer = self.root
         if pointer is None:
@@ -62,7 +64,9 @@ class BinarySearchTree():
         while pointer.left is not None:
             pointer = pointer.left
         print(f'smallest value is {pointer.data}')
-        return pointer.data    
+        return pointer.data  
+    
+    # find the largest value  
     def largest(self):
         pointer = self.root
         if pointer is None:
@@ -72,8 +76,22 @@ class BinarySearchTree():
             pointer = pointer.right
         print(f"largest value is {pointer.data}")
         return pointer.data
-            
     
+    # check binary tree 
+    def is_bst(self):
+        return self._is_bst_recursive(self.root, float('-inf'), float('inf'))
+
+    def _is_bst_recursive(self, node, min_val, max_val):
+        if node is None:
+            return True
+
+        if node.data <= min_val or node.data >= max_val:
+            return False
+
+        return (self._is_bst_recursive(node.left, min_val, node.data) and
+                self._is_bst_recursive(node.right, node.data, max_val))
+        
+        
 BTS = BinarySearchTree()
 
 BTS.insertValue(6)
@@ -94,3 +112,4 @@ print(BTS.displayInorder())
 
 BTS.smallest()
 BTS.largest()
+print(BTS.is_bst())

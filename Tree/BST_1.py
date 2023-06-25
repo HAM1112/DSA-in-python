@@ -32,8 +32,14 @@ class BinarySearchTree():
             return
         return self._inorder(self.root)
     def _inorder(self, node):
-        print("working")
-        return (self._inorder(node.left) + [node.data] + self._inorder(node.right)) if node else []     
+        return (self._inorder(node.left) + [node.data] + self._inorder(node.right)) if node else [] 
+    
+    #deletion 
+    def delete(self,val):
+        return self._delete(self.root,val)
+    def _delete(self,node,val):
+        
+                
 
 BTS = BinarySearchTree()
 
@@ -46,5 +52,5 @@ BTS.insertValue(10)
 BTS.insertValue(15)
 BTS.insertValue(20)
 print(BTS.displayInorder())
-
+BTS.delete(5)
 
