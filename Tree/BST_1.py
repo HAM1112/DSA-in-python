@@ -37,13 +37,13 @@ class BinarySearchTree():
     #deletion 
     def delete(self,val):
         self._delete(self.root,val)
-    def _delele(self,node,val):
+    def _delete(self,node,val):
         if node is None:
             return node
         if val < node.data :
-            node.left = self._delele(node.left,val)
+            node.left = self._delete(node.left,val)
         elif val > node.data :
-            node.right = self._delele(node.right,val)
+            node.right = self._delete(node.right,val)
         else:
             if node.left is None:
                 return node.right
@@ -52,7 +52,7 @@ class BinarySearchTree():
             
             minnode = self.smallest(node.r)
             node.data = minnode.data
-            node.r = self.delete(node.r,minnode)
+            node.r = self._delete(node.r,minnode)
         return node
         
         
@@ -70,4 +70,5 @@ BTS.insertValue(15)
 BTS.insertValue(20)
 print(BTS.displayInorder())
 BTS.delete(5)
+print(BTS.displayInorder())
 

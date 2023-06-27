@@ -70,7 +70,7 @@ class BST():
         if node is None:
             return node
         if val < node.data:
-            node.left = self.__delete(node.left,val)
+            node.left = self._delete(node.left,val)
         elif val > node.data:
             node.right = self._delete(node.right, val)
         else:
@@ -79,20 +79,23 @@ class BST():
             elif node.right is None:
                 return node.left
             
-            minNode = self.smallest(node.r)
-            node.data = minNode.data
-            node.r = self._delete(node.r,minNode)
+            minNode = self._smallest(node.right)
+            node.data = minNode.datagas
+            node.right = self._delete(node.right,minNode.data)
         return node            
     # def depth(self):
     #     return self._depth(self.root)
     # def _depth(self,node)
-        
-        
-BST = BST()
+
 BST.insert(25)
 BST.insert(50)
 BST.insert(10)
+BST.insert(10)
+BST.insert(30)
+BST.insert(40)
 BST.insert(5)
 print(BST.inOrder())
-print(BST.isBst())
-print(BST.smallest())
+BST.delete(50)
+# BST.delete(40)
+
+print(BST.inOrder())
