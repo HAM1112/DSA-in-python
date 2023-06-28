@@ -8,8 +8,7 @@ class Trie():
         self.root = TriNode()
     
     def insert(self, word):
-        node = self.root
-        
+        node = self.root 
         for char in word:
             if char not in node.children:
                 node.children[char] = TriNode()
@@ -18,15 +17,16 @@ class Trie():
     
     def search(self,word):
         node = self.root
-        
         for char in word:
             if char not in node.children:
                 return False
             node = node.children[char]
         return node.endOfWord
     
-        
-
+    def startWithPrefix(self,prefix):
+        pass
+    
+    
 trie = Trie()
 trie.insert("hello")
 print(trie.search("hello"))
